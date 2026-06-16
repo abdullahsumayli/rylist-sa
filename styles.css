@@ -5,8 +5,20 @@
   --border:rgba(0,0,0,.09); --border-2:rgba(0,0,0,.06);
   --ink:#231F20; --soft:#555B66; --mute:#6E747E;
   --blue:#C8161F; --blue-br:#ED1C24; --green:#ED1C24; --green-br:#ED1C24;
+  --red:#ED1C24; --red-2:#C8161F;
+  --t-saml:#1E8E5A; --t-saml-soft:#2BB673;
+  --t-expo-d:#1C75BC;
+  --t-expo-p:#C2902F;
   --maxw:1160px; --r:18px;
 }
+.track--saml{--accent:#1E8E5A}
+.track--expo-d{--accent:#1C75BC}
+.track--expo-p{--accent:#C2902F}
+.track-bar{position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent);border-radius:var(--r) var(--r) 0 0}
+.track-section{border-top:3px solid var(--accent)}
+.track-ic{color:var(--accent)}
+.card .ic svg.track-ic,.pillar .ic svg.track-ic{stroke:var(--accent)}
+.track-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,#fff);border:1px solid color-mix(in srgb,var(--accent) 26%,#fff);border-radius:999px;padding:4px 11px}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,'Segoe UI',Arial,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}

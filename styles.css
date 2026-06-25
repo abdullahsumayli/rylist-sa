@@ -49,8 +49,11 @@ header.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);bord
 .nav-links a.active{color:var(--ink);font-weight:700}
 .nav-links a.active::after{content:"";position:absolute;bottom:-6px;right:0;left:0;height:2px;background:var(--green-br);border-radius:2px}
 .nav-right{display:flex;align-items:center;gap:14px}
-.lang{border:1px solid var(--border);border-radius:9px;padding:5px 11px;font-size:13px;font-weight:700;color:var(--soft);cursor:pointer;background:transparent;font-family:inherit}
-.lang:hover{color:var(--ink);border-color:var(--blue-br)}
+.langsw{display:inline-flex;align-items:center;gap:7px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;white-space:nowrap}
+.langsw a{color:var(--soft);text-decoration:none;transition:color .2s}
+.langsw a:hover{color:var(--ink)}
+.langsw .on{color:var(--blue-br)}
+.langsw i{color:#cfd3d8;font-style:normal;font-weight:400}
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:11px;padding:11px 20px;font-weight:700;font-size:15px;font-family:'Cairo',sans-serif;cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .2s,background .2s;white-space:nowrap}
 .btn svg{width:16px;height:16px}
 .btn:hover{transform:translateY(-2px)}

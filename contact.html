@@ -12,6 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0VEMUMyNCIgZD0iTTQgNGg0bDQgNyA0LTdoNGwtNiAxMHY2aC00di02eiIvPjwvc3ZnPg==">
 <link rel="alternate" hreflang="ar" href="https://rylist.sa/contact">
 <link rel="alternate" hreflang="en" href="https://rylist.sa/en/contact">
+<link rel="alternate" hreflang="zh" href="https://rylist.sa/zh/contact">
 <link rel="alternate" hreflang="x-default" href="https://rylist.sa/contact">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +65,7 @@
 <header id="hdr"><div class="wrap nav">
 <a href="index.html" aria-label="RYLIST GLOBAL"><svg class="logo"><use href="#ry-logo"/></svg></a>
 <nav class="nav-links" id="navlinks"><a href="index.html">الرئيسية</a><a href="about.html">من نحن</a><a href="solutions.html">حلولنا</a><a href="why.html">لماذا RYLIST</a><a href="guide.html">دليل التملّك</a><a href="contact.html" class="active">تواصل</a></nav>
-<div class="nav-right"><button class="lang" id="lang">EN</button>
+<div class="nav-right"><div class="langsw" id="langsw"></div>
 <a href="contact.html" class="btn btn-primary">تواصل معنا</a>
 <button class="nav-toggle" id="toggle" aria-label="القائمة"><span></span><span></span><span></span></button></div>
 </div></header>
@@ -112,7 +113,7 @@ var hdr=document.getElementById('hdr');
 function os(){hdr.classList.toggle('scrolled',window.scrollY>20)}os();addEventListener('scroll',os,{passive:true});
 var tg=document.getElementById('toggle'),nl=document.getElementById('navlinks');
 if(tg)tg.addEventListener('click',function(){nl.classList.toggle('open')});
-var lg=document.getElementById('lang');if(lg)lg.addEventListener('click',function(){var p=location.pathname.split('/').pop()||'index.html';location.href='en/'+p;});
+var sw=document.getElementById('langsw');if(sw){var pth=location.pathname.replace(/\.html$/,'');var b=pth.replace(/^\/(en|zh)(?=\/|$)/,'').replace(/\/index$/,'/');if(b==='')b='/';var cur=/^\/en(\/|$)/.test(pth)?'en':(/^\/zh(\/|$)/.test(pth)?'zh':'ar');sw.innerHTML=[['ar','AR',''],['en','EN','/en'],['zh','中文','/zh']].map(function(l){return l[0]===cur?'<span class="on">'+l[1]+'</span>':'<a href="'+(l[2]+b)+'">'+l[1]+'</a>';}).join('<i>·</i>');}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv:not(.show)').forEach(function(el,i){el.style.transitionDelay=(i%4*55)+'ms';io.observe(el)});
 var cf=document.getElementById('cform');

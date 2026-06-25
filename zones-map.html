@@ -83,7 +83,7 @@
 <script>
 (function(){
   var WA='966508148860';
-  var lang=/[?&]lang=en/.test(location.search)?'en':'ar';
+  var lang=/[?&]lang=zh/.test(location.search)?'zh':(/[?&]lang=en/.test(location.search)?'en':'ar');
   var state={p:'nonresident',c:'riyadh'};
 
   var T={
@@ -104,7 +104,7 @@
       lead:'Pick your status and a city for an indicative read on whether ownership is allowed and where — per the zones designated by the Real Estate General Authority (REGA). Tap any city on the map to zoom in and view its projects.',
       status:'Your status',city:'City',allowed:'Allowed',cond:'Allowed (Muslims only)',no:'Not allowed',
       zonesOf:function(c){return c+' zones:';},approx:'Pin locations are approximate for major projects — exact boundaries on the REGA platform.',
-      wa:'Chat on WhatsApp',rega:'Exact boundaries on REGA',langbtn:'عربي',
+      wa:'Chat on WhatsApp',rega:'Exact boundaries on REGA',langbtn:'中文',
       note:'For general guidance only — this tool is not legal advice or a brokerage offer, and rules may change; verify on the official REGA platform before any decision. Source: Geographic Scope Document — Real Estate General Authority (REGA). Last updated: June 2026.',
       profiles:{resident:'Resident',premium:'Premium Residency',gcc:'GCC citizen',nonresident:'Non-resident',company:'Company / Entity'},
       profName:{resident:'a resident',premium:'a Premium Residency holder',gcc:'a GCC citizen',nonresident:'a non-resident individual',company:'a non-Saudi company / entity'},
@@ -112,23 +112,36 @@
       holyNote:function(c){return 'Ownership in '+c+' is limited to Muslims and Saudi entities, within designated zones.';},
       companyHoly:'Non-Saudi companies and entities are entirely excluded from Makkah and Madinah.',
       otherExtra:'',
-      waMsg:function(p,c){return 'Hello, I am '+p+' and I would like to ask about property ownership in '+c+'.';}}
+      waMsg:function(p,c){return 'Hello, I am '+p+' and I would like to ask about property ownership in '+c+'.';}},
+    zh:{eyebrow:'非沙特人房产持有',h2:'您能在这里购房吗？一秒查询',
+      lead:'选择您的身份与城市，立即查看是否可以购房及在何处购房——依据房地产总局（REGA）划定的区域。点击地图上的任意城市可放大并查看其项目。',
+      status:'您的身份',city:'城市',allowed:'允许',cond:'允许（仅限穆斯林）',no:'不允许',
+      zonesOf:function(c){return c+' 区域：';},approx:'大型项目的标记位置为大致位置——精确边界请见 REGA 平台。',
+      wa:'通过 WhatsApp 咨询',rega:'精确边界见 REGA',langbtn:'عربي',
+      note:'仅供一般参考——本工具不构成法律建议或中介要约，相关规定可能变化；做出任何决定前请在 REGA 官方平台核实。来源：地理范围文件——房地产总局（REGA）。最后更新：2026年6月。',
+      profiles:{resident:'居民',premium:'高级居留',gcc:'海湾公民',nonresident:'非居民',company:'公司 / 实体'},
+      profName:{resident:'居民',premium:'高级居留持有人',gcc:'海湾国家公民',nonresident:'非居民个人',company:'非沙特公司 / 实体'},
+      pnote:{resident:'在所有城市的核准区域内。区域之外允许拥有一处住宅物业。',premium:'在核准区域内（住宅 / 商业 / 工业）。',gcc:'在核准区域内，用于居住或投资。',nonresident:'在核准区域内——需从沙特使馆办理数字身份。',company:'在核准区域内——需在投资部注册并披露所有者。'},
+      holyNote:function(c){return '在'+c+'购房仅限穆斯林与沙特实体，并须在核准区域内。';},
+      companyHoly:'非沙特公司与实体被完全排除在麦加与麦地那之外。',
+      otherExtra:'',
+      waMsg:function(p,c){return '您好，我是'+p+'，想咨询在'+c+'购房的相关事宜。';}}
   };
 
   var cities={
-    riyadh:{type:'open',lat:24.713,lng:46.675,zoom:11,ar:'الرياض',en:'Riyadh',
+    riyadh:{type:'open',lat:24.713,lng:46.675,zoom:11,ar:'الرياض',en:'Riyadh',zh:'利雅得',
       zar:'القدية · المربع الجديد · المسار الرياضي ومنطقة الفنون · بوابة الدرعية · حديقة الملك سلمان · سدرة · كافد · مطار الملك سلمان الدولي · مواقع التطوير الموجّه للنقل',
       zen:'Qiddiya · New Murabba · Sports Boulevard & Arts District · Diriyah Gate · King Salman Park · Sedra · KAFD · King Salman Int’l Airport · transit-oriented development sites',
       pins:[{ar:'المربع الجديد',en:'New Murabba',lat:24.78,lng:46.64},{ar:'القدية',en:'Qiddiya',lat:24.62,lng:46.30},{ar:'كافد',en:'KAFD',lat:24.766,lng:46.641},{ar:'بوابة الدرعية',en:'Diriyah Gate',lat:24.737,lng:46.575},{ar:'حديقة الملك سلمان',en:'King Salman Park',lat:24.685,lng:46.69},{ar:'سدرة',en:'Sedra',lat:24.96,lng:46.79},{ar:'مطار الملك سلمان الدولي',en:'King Salman Int’l Airport',lat:24.957,lng:46.698}]},
-    jeddah:{type:'open',lat:21.543,lng:39.20,zoom:12,ar:'جدة',en:'Jeddah',
+    jeddah:{type:'open',lat:21.543,lng:39.20,zoom:12,ar:'جدة',en:'Jeddah',zh:'吉达',
       zar:'وسط جدة + 55 منطقة تطويرية في محافظة جدة',
       zen:'Jeddah Central + 55 development areas across Jeddah governorate',
       pins:[{ar:'وسط جدة',en:'Jeddah Central',lat:21.49,lng:39.17}]},
-    makkah:{type:'holy',lat:21.422,lng:39.826,zoom:13,ar:'مكة المكرمة',en:'Makkah',
+    makkah:{type:'holy',lat:21.422,lng:39.826,zoom:13,ar:'مكة المكرمة',en:'Makkah',zh:'麦加',
       zar:'أبراج مكة · المنار · برج أجياد · بوابة الملك سلمان · تلال فيليج · جبل عمر · ذاخر مكة · ضاحية سمو · مسار · منطقتا مكة (1 و2)',
       zen:'Makkah Towers · Al-Manar · Ajyad Tower · King Salman Gate · Telal Village · Jabal Omar · Thakher Makkah · Dahiyat Sumou · Masar · Makkah Districts 1 & 2',
       pins:[{ar:'جبل عمر',en:'Jabal Omar',lat:21.418,lng:39.819},{ar:'مسار',en:'Masar',lat:21.44,lng:39.78},{ar:'أبراج مكة',en:'Makkah Towers',lat:21.417,lng:39.826}]},
-    madinah:{type:'holy',lat:24.47,lng:39.611,zoom:12,ar:'المدينة المنورة',en:'Madinah',
+    madinah:{type:'holy',lat:24.47,lng:39.611,zoom:12,ar:'المدينة المنورة',en:'Madinah',zh:'麦地那',
       zar:'الغرة · منطقتا المدينة (1 و2) · المهوى · دارة الهجرة · داون تاون المدينة · ديار المقر · رؤى المدينة · مدينة المعرفة الاقتصادية · مشراف',
       zen:'Al-Ghurra · Madinah Districts 1 & 2 · Al-Mahwa · Darat Al-Hijra · Madinah Downtown · Diyar Al-Maqar · Ru’a Al-Madinah · Knowledge Economic City · Mishraf',
       pins:[{ar:'مدينة المعرفة الاقتصادية',en:'Knowledge Economic City',lat:24.50,lng:39.66},{ar:'المنطقة المركزية',en:'Central area',lat:24.468,lng:39.611}]}
@@ -155,7 +168,7 @@
     Object.keys(cities).forEach(function(k){
       var c=cities[k];
       var m=L.circleMarker([c.lat,c.lng],{radius:11,color:'#fff',weight:2,fillColor:colorOf(c.type),fillOpacity:1});
-      m.bindTooltip(c[lang],{direction:'top'});
+      m.bindTooltip(c[lang]||c.en,{direction:'top'});
       m.on('click',function(){selectCity(k);});
       m.addTo(cityLayer);cityMarkers[k]=m;
     });
@@ -165,7 +178,7 @@
     var c=cities[k];if(!c.pins)return;
     c.pins.forEach(function(p){
       var m=L.circleMarker([p.lat,p.lng],{radius:7,color:'#fff',weight:2,fillColor:colorOf(c.type),fillOpacity:.95});
-      m.bindTooltip(p[lang],{permanent:true,direction:'top',className:'rz-ztip'});
+      m.bindTooltip(p[lang]||p.en,{permanent:true,direction:'top',className:'rz-ztip'});
       m.addTo(zoneLayer);
     });
   }
@@ -241,7 +254,7 @@
   }
 
   function start(){
-    document.getElementById('rz-lang').onclick=function(){lang=(lang==='ar')?'en':'ar';applyLang();};
+    document.getElementById('rz-lang').onclick=function(){lang=(lang==='ar')?'en':(lang==='en')?'zh':'ar';applyLang();};
     initMap();
     applyLang();
   }

@@ -87,31 +87,31 @@
 
   var T={
     ar:{eyebrow:'تملّك غير السعوديين للعقار',h2:'هل يمكنك التملّك؟ تحقّق في ثانية',
-      lead:'اختر صفتك والمدينة، ونوضّح لك فوراً إن كان التملّك متاحاً وأين — وفق النطاقات المعتمدة من مجلس الوزراء (يونيو 2026). اضغط أي مدينة على الخريطة لتكبيرها وعرض مشاريعها.',
+      lead:'اختر صفتك والمدينة، ونوضّح لك بشكل إرشادي إن كان التملّك متاحاً وأين — وفق النطاقات المعتمدة من الهيئة العامة للعقار (REGA). اضغط أي مدينة على الخريطة لتكبيرها وعرض مشاريعها.',
       status:'صفتك',city:'المدينة',allowed:'متاح',cond:'متاح بشرط الإسلام',no:'غير متاح',
       zonesOf:function(c){return 'نطاقات '+c+':';},approx:'مواقع الدبابيس تقريبية للمشاريع الكبرى — الحدود الدقيقة على منصة REGA.',
       wa:'تواصل عبر واتساب',rega:'الحدود الدقيقة على منصة REGA',langbtn:'EN',
-      note:'المصدر: وثيقة النطاقات الجغرافية — الهيئة العامة للعقار (REGA)، معتمدة من مجلس الوزراء في 23 يونيو 2026 (نحو 170 نطاقاً). آخر تحديث: يونيو 2026.',
+      note:'للإرشاد العام فقط — هذه الأداة ليست استشارة قانونية ولا عرض وساطة، والأحكام قابلة للتغيير؛ تحقّق من منصة REGA الرسمية قبل أي قرار. المصدر: وثيقة النطاقات الجغرافية — الهيئة العامة للعقار (REGA). آخر تحديث: يونيو 2026.',
       profiles:{resident:'مقيم',premium:'إقامة مميزة',gcc:'خليجي',nonresident:'غير مقيم',company:'شركة / كيان'},
       profName:{resident:'مقيم داخل المملكة',premium:'حامل إقامة مميزة',gcc:'مواطن خليجي',nonresident:'فرد غير مقيم',company:'شركة / كيان غير سعودي'},
       pnote:{resident:'داخل النطاقات المعتمدة بكل المدن. خارج النطاق يُسمح بعقار سكني واحد.',premium:'داخل النطاقات المعتمدة (سكني / تجاري / صناعي).',gcc:'داخل النطاقات المعتمدة، للسكن أو الاستثمار.',nonresident:'داخل النطاقات المعتمدة — يلزم إصدار هوية رقمية من سفارة سعودية.',company:'داخل النطاقات المعتمدة — يلزم التسجيل بوزارة الاستثمار والإفصاح عن المُلّاك.'},
       holyNote:function(c){return 'التملّك في '+c+' مقصور على المسلمين والكيانات السعودية، وضمن النطاقات المعتمدة.';},
       companyHoly:'الشركات والكيانات غير السعودية مستثناة كلياً من مكة المكرمة والمدينة المنورة.',
       otherExtra:'',
-      waMsg:function(p,c){return 'السلام عليكم، أنا '+p+' وأرغب بالتملّك في '+c+'. أبغى مساعدة في إجراءات التملّك والإغلاق.';}},
+      waMsg:function(p,c){return 'السلام عليكم، أنا '+p+' وأرغب بالاستفسار عن التملّك في '+c+'.';}},
     en:{eyebrow:'Non-Saudi Property Ownership',h2:'Can you own here? Check in a second',
-      lead:'Pick your status and a city to see instantly whether ownership is allowed and where — per the Council of Ministers–approved zones (June 2026). Tap any city on the map to zoom in and view its projects.',
+      lead:'Pick your status and a city for an indicative read on whether ownership is allowed and where — per the zones designated by the Real Estate General Authority (REGA). Tap any city on the map to zoom in and view its projects.',
       status:'Your status',city:'City',allowed:'Allowed',cond:'Allowed (Muslims only)',no:'Not allowed',
       zonesOf:function(c){return c+' zones:';},approx:'Pin locations are approximate for major projects — exact boundaries on the REGA platform.',
       wa:'Chat on WhatsApp',rega:'Exact boundaries on REGA',langbtn:'عربي',
-      note:'Source: Geographic Scope Document — Real Estate General Authority (REGA), approved by the Council of Ministers on 23 June 2026 (~170 zones). Last updated: June 2026.',
+      note:'For general guidance only — this tool is not legal advice or a brokerage offer, and rules may change; verify on the official REGA platform before any decision. Source: Geographic Scope Document — Real Estate General Authority (REGA). Last updated: June 2026.',
       profiles:{resident:'Resident',premium:'Premium Residency',gcc:'GCC citizen',nonresident:'Non-resident',company:'Company / Entity'},
       profName:{resident:'a resident',premium:'a Premium Residency holder',gcc:'a GCC citizen',nonresident:'a non-resident individual',company:'a non-Saudi company / entity'},
       pnote:{resident:'Within designated zones in all cities. Outside zones, one residential property is allowed.',premium:'Within designated zones (residential / commercial / industrial).',gcc:'Within designated zones, for housing or investment.',nonresident:'Within designated zones — a digital ID from a Saudi embassy is required.',company:'Within designated zones — registration with the Ministry of Investment and owner disclosure are required.'},
       holyNote:function(c){return 'Ownership in '+c+' is limited to Muslims and Saudi entities, within designated zones.';},
       companyHoly:'Non-Saudi companies and entities are entirely excluded from Makkah and Madinah.',
       otherExtra:'',
-      waMsg:function(p,c){return 'Hello, I am '+p+' and I want to own property in '+c+'. I would like help with the ownership and closing process.';}}
+      waMsg:function(p,c){return 'Hello, I am '+p+' and I would like to ask about property ownership in '+c+'.';}}
   };
 
   var cities={

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هل يمكنك التملّك في السعودية؟ — RYLIST GLOBAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+.rz{--ink:#231F20;--soft:#555B66;--mute:#6E747E;--red:#ED1C24;--red2:#C8161F;
+  --green:#1E8E5A;--green-bg:#E7F4EC;--green-ink:#14613D;
+  --gold:#C2902F;--gold-bg:#F8F0DC;--gold-ink:#785611;
+  --no-bg:#F3EAEA;--no-ink:#8A2B2B;--border:rgba(0,0,0,.09);--bg2:#F7F8FA;--r:18px;
+  font-family:'Tajawal',system-ui,'Segoe UI',Arial,sans-serif;color:var(--ink);line-height:1.7}
+.rz[dir=rtl]{text-align:right}.rz[dir=ltr]{text-align:left}
+.rz *{margin:0;padding:0;box-sizing:border-box}
+.rz-wrap{max-width:1160px;margin:0 auto;padding:80px 22px}
+.rz-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.rz-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--red);font-weight:700;font-size:14px;margin-bottom:14px}
+.rz-eyebrow::before{content:"";width:22px;height:2px;background:var(--red);border-radius:2px}
+.rz-h2{font-family:'Cairo','Tajawal',sans-serif;font-size:clamp(26px,3.4vw,40px);font-weight:800;line-height:1.25;letter-spacing:-.3px}
+.rz-lead{color:var(--soft);font-size:clamp(15px,1.5vw,17px);max-width:680px;margin-top:14px}
+.rz-langbtn{flex-shrink:0;border:1px solid var(--border);background:#fff;border-radius:9px;padding:7px 14px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;font-family:'Cairo',sans-serif}
+.rz-langbtn:hover{border-color:var(--red)}
+.rz-tool{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start;margin-top:30px}
+.rz-mapwrap{order:2;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+#rz-leaflet{width:100%;height:480px;background:#eef1f4}
+.rz-panel{order:1;display:flex;flex-direction:column;gap:16px}
+.rz-qlbl{font-size:13px;font-weight:700;color:var(--soft);margin-bottom:8px}
+.rz-chips{display:flex;flex-wrap:wrap;gap:8px}
+.rz-chip{border:1px solid var(--border);background:#fff;border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:500;color:var(--ink);cursor:pointer;font-family:inherit;transition:all .15s}
+.rz-chip:hover{border-color:var(--red)}
+.rz-chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.rz-result{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-top:4px}
+.rz-badge{display:inline-flex;align-items:center;gap:8px;font-family:'Cairo',sans-serif;font-weight:800;font-size:16px;padding:7px 14px;border-radius:999px}
+.rz-badge.yes{background:var(--green-bg);color:var(--green-ink)}
+.rz-badge.cond{background:var(--gold-bg);color:var(--gold-ink)}
+.rz-badge.no{background:var(--no-bg);color:var(--no-ink)}
+.rz-rnote{color:var(--soft);font-size:14px;margin-top:12px}
+.rz-zones{margin-top:12px;font-size:13px;line-height:1.7;color:#3f4650}
+.rz-zones b{color:var(--ink);font-weight:700}
+.rz-approx{font-size:11.5px;color:var(--mute);margin-top:8px}
+.rz-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.rz-wa{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;border-radius:11px;padding:11px 18px;font-family:'Cairo',sans-serif;font-weight:700;font-size:14.5px;text-decoration:none;box-shadow:0 8px 22px rgba(30,142,90,.26)}
+.rz-rega{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--border);color:var(--ink);border-radius:11px;padding:11px 16px;font-weight:700;font-size:14px;text-decoration:none}
+.rz-rega:hover{border-color:var(--red)}
+.rz-note{color:var(--mute);font-size:12px;line-height:1.7;margin-top:18px}
+.rz-ztip{background:#231F20;color:#fff;border:0;font-family:'Tajawal',sans-serif;font-weight:700;font-size:12px;padding:3px 8px;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.rz-ztip::before{display:none}
+@media(max-width:880px){.rz-tool{grid-template-columns:1fr;gap:18px}.rz-wrap{padding:56px 18px}#rz-leaflet{height:380px}}
+</style>
+</head>
+<body>
+
+<section class="rz" id="rz" dir="rtl">
+  <div class="rz-wrap">
+    <div class="rz-top">
+      <div>
+        <span class="rz-eyebrow" id="rz-eyebrow"></span>
+        <h2 class="rz-h2" id="rz-h2"></h2>
+      </div>
+      <button class="rz-langbtn" id="rz-lang">EN</button>
+    </div>
+    <p class="rz-lead" id="rz-lead"></p>
+
+    <div class="rz-tool">
+      <div class="rz-mapwrap"><div id="rz-leaflet"></div></div>
+      <div class="rz-panel">
+        <div><div class="rz-qlbl" id="rz-lbl-status"></div><div class="rz-chips" id="rz-profiles"></div></div>
+        <div><div class="rz-qlbl" id="rz-lbl-city"></div><div class="rz-chips" id="rz-cities"></div></div>
+        <div class="rz-result" id="rz-result"></div>
+      </div>
+    </div>
+
+    <p class="rz-note" id="rz-note"></p>
+  </div>
+</section>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var WA='966508148860';
+  var lang='ar';
+  var state={p:'nonresident',c:'riyadh'};
+
+  var T={
+    ar:{eyebrow:'تملّك غير السعوديين للعقار',h2:'هل يمكنك التملّك؟ تحقّق في ثانية',
+      lead:'اختر صفتك والمدينة، ونوضّح لك فوراً إن كان التملّك متاحاً وأين — وفق النطاقات المعتمدة من مجلس الوزراء (يونيو 2026). اضغط أي مدينة على الخريطة لتكبيرها وعرض مشاريعها.',
+      status:'صفتك',city:'المدينة',allowed:'متاح',cond:'متاح بشرط الإسلام',no:'غير متاح',
+      zonesOf:function(c){return 'نطاقات '+c+':';},approx:'مواقع الدبابيس تقريبية للمشاريع الكبرى — الحدود الدقيقة على منصة REGA.',
+      wa:'تواصل عبر واتساب',rega:'الحدود الدقيقة على منصة REGA',langbtn:'EN',
+      note:'المصدر: وثيقة النطاقات الجغرافية — الهيئة العامة للعقار (REGA)، معتمدة من مجلس الوزراء في 23 يونيو 2026 (نحو 170 نطاقاً). آخر تحديث: يونيو 2026.',
+      profiles:{resident:'مقيم',premium:'إقامة مميزة',gcc:'خليجي',nonresident:'غير مقيم',company:'شركة / كيان'},
+      profName:{resident:'مقيم داخل المملكة',premium:'حامل إقامة مميزة',gcc:'مواطن خليجي',nonresident:'فرد غير مقيم',company:'شركة / كيان غير سعودي'},
+      pnote:{resident:'داخل النطاقات المعتمدة بكل المدن. خارج النطاق يُسمح بعقار سكني واحد.',premium:'داخل النطاقات المعتمدة (سكني / تجاري / صناعي).',gcc:'داخل النطاقات المعتمدة، للسكن أو الاستثمار.',nonresident:'داخل النطاقات المعتمدة — يلزم إصدار هوية رقمية من سفارة سعودية.',company:'داخل النطاقات المعتمدة — يلزم التسجيل بوزارة الاستثمار والإفصاح عن المُلّاك.'},
+      holyNote:function(c){return 'التملّك في '+c+' مقصور على المسلمين والكيانات السعودية، وضمن النطاقات المعتمدة.';},
+      companyHoly:'الشركات والكيانات غير السعودية مستثناة كلياً من مكة المكرمة والمدينة المنورة.',
+      otherExtra:'',
+      waMsg:function(p,c){return 'السلام عليكم، أنا '+p+' وأرغب بالتملّك في '+c+'. أبغى مساعدة في إجراءات التملّك والإغلاق.';}},
+    en:{eyebrow:'Non-Saudi Property Ownership',h2:'Can you own here? Check in a second',
+      lead:'Pick your status and a city to see instantly whether ownership is allowed and where — per the Council of Ministers–approved zones (June 2026). Tap any city on the map to zoom in and view its projects.',
+      status:'Your status',city:'City',allowed:'Allowed',cond:'Allowed (Muslims only)',no:'Not allowed',
+      zonesOf:function(c){return c+' zones:';},approx:'Pin locations are approximate for major projects — exact boundaries on the REGA platform.',
+      wa:'Chat on WhatsApp',rega:'Exact boundaries on REGA',langbtn:'عربي',
+      note:'Source: Geographic Scope Document — Real Estate General Authority (REGA), approved by the Council of Ministers on 23 June 2026 (~170 zones). Last updated: June 2026.',
+      profiles:{resident:'Resident',premium:'Premium Residency',gcc:'GCC citizen',nonresident:'Non-resident',company:'Company / Entity'},
+      profName:{resident:'a resident',premium:'a Premium Residency holder',gcc:'a GCC citizen',nonresident:'a non-resident individual',company:'a non-Saudi company / entity'},
+      pnote:{resident:'Within designated zones in all cities. Outside zones, one residential property is allowed.',premium:'Within designated zones (residential / commercial / industrial).',gcc:'Within designated zones, for housing or investment.',nonresident:'Within designated zones — a digital ID from a Saudi embassy is required.',company:'Within designated zones — registration with the Ministry of Investment and owner disclosure are required.'},
+      holyNote:function(c){return 'Ownership in '+c+' is limited to Muslims and Saudi entities, within designated zones.';},
+      companyHoly:'Non-Saudi companies and entities are entirely excluded from Makkah and Madinah.',
+      otherExtra:'',
+      waMsg:function(p,c){return 'Hello, I am '+p+' and I want to own property in '+c+'. I would like help with the ownership and closing process.';}}
+  };
+
+  var cities={
+    riyadh:{type:'open',lat:24.713,lng:46.675,zoom:11,ar:'الرياض',en:'Riyadh',
+      zar:'القدية · المربع الجديد · المسار الرياضي ومنطقة الفنون · بوابة الدرعية · حديقة الملك سلمان · سدرة · كافد · مطار الملك سلمان الدولي · مواقع التطوير الموجّه للنقل',
+      zen:'Qiddiya · New Murabba · Sports Boulevard & Arts District · Diriyah Gate · King Salman Park · Sedra · KAFD · King Salman Int’l Airport · transit-oriented development sites',
+      pins:[{ar:'المربع الجديد',en:'New Murabba',lat:24.78,lng:46.64},{ar:'القدية',en:'Qiddiya',lat:24.62,lng:46.30},{ar:'كافد',en:'KAFD',lat:24.766,lng:46.641},{ar:'بوابة الدرعية',en:'Diriyah Gate',lat:24.737,lng:46.575},{ar:'حديقة الملك سلمان',en:'King Salman Park',lat:24.685,lng:46.69},{ar:'سدرة',en:'Sedra',lat:24.96,lng:46.79},{ar:'مطار الملك سلمان الدولي',en:'King Salman Int’l Airport',lat:24.957,lng:46.698}]},
+    jeddah:{type:'open',lat:21.543,lng:39.20,zoom:12,ar:'جدة',en:'Jeddah',
+      zar:'وسط جدة + 55 منطقة تطويرية في محافظة جدة',
+      zen:'Jeddah Central + 55 development areas across Jeddah governorate',
+      pins:[{ar:'وسط جدة',en:'Jeddah Central',lat:21.49,lng:39.17}]},
+    makkah:{type:'holy',lat:21.422,lng:39.826,zoom:13,ar:'مكة المكرمة',en:'Makkah',
+      zar:'أبراج مكة · المنار · برج أجياد · بوابة الملك سلمان · تلال فيليج · جبل عمر · ذاخر مكة · ضاحية سمو · مسار · منطقتا مكة (1 و2)',
+      zen:'Makkah Towers · Al-Manar · Ajyad Tower · King Salman Gate · Telal Village · Jabal Omar · Thakher Makkah · Dahiyat Sumou · Masar · Makkah Districts 1 & 2',
+      pins:[{ar:'جبل عمر',en:'Jabal Omar',lat:21.418,lng:39.819},{ar:'مسار',en:'Masar',lat:21.44,lng:39.78},{ar:'أبراج مكة',en:'Makkah Towers',lat:21.417,lng:39.826}]},
+    madinah:{type:'holy',lat:24.47,lng:39.611,zoom:12,ar:'المدينة المنورة',en:'Madinah',
+      zar:'الغرة · منطقتا المدينة (1 و2) · المهوى · دارة الهجرة · داون تاون المدينة · ديار المقر · رؤى المدينة · مدينة المعرفة الاقتصادية · مشراف',
+      zen:'Al-Ghurra · Madinah Districts 1 & 2 · Al-Mahwa · Darat Al-Hijra · Madinah Downtown · Diyar Al-Maqar · Ru’a Al-Madinah · Knowledge Economic City · Mishraf',
+      pins:[{ar:'مدينة المعرفة الاقتصادية',en:'Knowledge Economic City',lat:24.50,lng:39.66},{ar:'المنطقة المركزية',en:'Central area',lat:24.468,lng:39.611}]}
+  };
+
+  var map,cityLayer,zoneLayer,cityMarkers={};
+  function colorOf(t){return t==='open'?'#1E8E5A':'#C2902F';}
+
+  function initMap(){
+    if(typeof L==='undefined'){return;}
+    map=L.map('rz-leaflet',{scrollWheelZoom:false}).setView([24.6,45.4],5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+    cityLayer=L.layerGroup().addTo(map);
+    zoneLayer=L.layerGroup().addTo(map);
+    drawCities();
+    var c=cities[state.c];
+    map.setView([c.lat,c.lng],c.zoom);
+    showZones(state.c);
+    setTimeout(function(){map.invalidateSize();},250);
+    setTimeout(function(){map.invalidateSize();},900);
+  }
+  function drawCities(){
+    if(!map)return;cityLayer.clearLayers();cityMarkers={};
+    Object.keys(cities).forEach(function(k){
+      var c=cities[k];
+      var m=L.circleMarker([c.lat,c.lng],{radius:11,color:'#fff',weight:2,fillColor:colorOf(c.type),fillOpacity:1});
+      m.bindTooltip(c[lang],{direction:'top'});
+      m.on('click',function(){selectCity(k);});
+      m.addTo(cityLayer);cityMarkers[k]=m;
+    });
+  }
+  function showZones(k){
+    if(!map)return;zoneLayer.clearLayers();
+    var c=cities[k];if(!c.pins)return;
+    c.pins.forEach(function(p){
+      var m=L.circleMarker([p.lat,p.lng],{radius:7,color:'#fff',weight:2,fillColor:colorOf(c.type),fillOpacity:.95});
+      m.bindTooltip(p[lang],{permanent:true,direction:'top',className:'rz-ztip'});
+      m.addTo(zoneLayer);
+    });
+  }
+  function selectCity(k){
+    state.c=k;var c=cities[k];
+    if(map){map.flyTo([c.lat,c.lng],c.zoom,{duration:.8});setTimeout(function(){map.invalidateSize();},300);}
+    showZones(k);setActive('rz-cities',k);render();
+  }
+
+  function compute(p,c){
+    var t=T[lang],cn=cities[c][lang];
+    var holy=(c==='makkah'||c==='madinah');
+    if(holy){
+      if(p==='company')return{cls:'no',label:t.no,note:t.companyHoly};
+      return{cls:'cond',label:t.cond,note:t.holyNote(cn)};
+    }
+    return{cls:'yes',label:t.allowed,note:t.pnote[p]};
+  }
+
+  function buildChips(){
+    var t=T[lang];
+    var pc=document.getElementById('rz-profiles');pc.innerHTML='';
+    Object.keys(t.profiles).forEach(function(k){
+      var b=document.createElement('button');b.className='rz-chip'+(state.p===k?' on':'');
+      b.textContent=t.profiles[k];b.setAttribute('data-k',k);
+      b.onclick=function(){state.p=k;setActive('rz-profiles',k);render();};
+      pc.appendChild(b);
+    });
+    var cc=document.getElementById('rz-cities');cc.innerHTML='';
+    Object.keys(cities).forEach(function(k){
+      var b=document.createElement('button');b.className='rz-chip'+(state.c===k?' on':'');
+      b.textContent=cities[k][lang];b.setAttribute('data-k',k);
+      b.onclick=function(){selectCity(k);};
+      cc.appendChild(b);
+    });
+  }
+  function setActive(group,val){
+    document.querySelectorAll('#'+group+' .rz-chip').forEach(function(b){
+      b.classList.toggle('on',b.getAttribute('data-k')===val);
+    });
+  }
+
+  function render(){
+    var t=T[lang],c=cities[state.c],cn=c[lang];
+    var r=compute(state.p,state.c);
+    var msg=t.waMsg(t.profName[state.p],cn);
+    var wa='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    var zt=(lang==='ar')?c.zar:c.zen;
+    var h='<span class="rz-badge '+r.cls+'">'+r.label+' — '+cn+'</span>'
+      +'<p class="rz-rnote">'+r.note+'</p>'
+      +'<div class="rz-zones"><b>'+t.zonesOf(cn)+'</b> '+zt+'</div>'
+      +'<div class="rz-approx">'+t.approx+'</div>'
+      +'<div class="rz-cta"><a class="rz-wa" href="'+wa+'" target="_blank" rel="noopener">'+t.wa+'</a>'
+      +'<a class="rz-rega" href="https://saudiproperties.rega.gov.sa" target="_blank" rel="noopener">'+t.rega+'</a></div>';
+    document.getElementById('rz-result').innerHTML=h;
+  }
+
+  function applyLang(){
+    var t=T[lang];
+    document.getElementById('rz').setAttribute('dir',lang==='ar'?'rtl':'ltr');
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+    document.getElementById('rz-eyebrow').textContent=t.eyebrow;
+    document.getElementById('rz-h2').textContent=t.h2;
+    document.getElementById('rz-lead').textContent=t.lead;
+    document.getElementById('rz-lbl-status').textContent=t.status;
+    document.getElementById('rz-lbl-city').textContent=t.city;
+    document.getElementById('rz-note').textContent=t.note;
+    document.getElementById('rz-lang').textContent=t.langbtn;
+    buildChips();
+    drawCities();showZones(state.c);
+    render();
+  }
+
+  function start(){
+    document.getElementById('rz-lang').onclick=function(){lang=(lang==='ar')?'en':'ar';applyLang();};
+    initMap();
+    applyLang();
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',start);}else{start();}
+})();
+</script>
+
+</body>
+</html>
